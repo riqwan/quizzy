@@ -1,0 +1,8 @@
+<h3>User Details</h3>
+
+<%= form_for User.new, url: users_path, html: { class: 'nifty_form' } do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Create" %>
+<% end %>

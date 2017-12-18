@@ -1,0 +1,12 @@
+<h3>Show</h3>
+
+<%= @question.text %>
+
+<%= form_for Answer.new, url: question_answers_path(question_id: @question.id), html: { class: 'nifty_form' } do |f| %>
+  <% @question.choices.each do |choice| %>
+    <%= f.radio_button :choice_id, choice.id %>
+    <%= label :choice_id, choice.text %>
+  <% end %>
+
+  <%= f.submit "Next" %>
+<% end %>
