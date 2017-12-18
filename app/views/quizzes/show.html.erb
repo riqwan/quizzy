@@ -1,12 +1,19 @@
-<h3>Show</h3>
+<h2 class="page-title"><%= @quiz.name %></h2>
 
-<%= @question.text %>
+<section class="block">
+  <h6 class="text-right"><%= @quiz.questions.where('id > ?', @question.id).count + 1 %> question remaining</h6>
+  <hr>
+  <h3 class="title"><%= @question.text %></h3>
 
-<%= form_for Answer.new, url: question_answers_path(question_id: @question.id), html: { class: 'nifty_form' } do |f| %>
-  <% @question.choices.each do |choice| %>
-    <%= f.radio_button :choice_id, choice.id %>
-    <%= label :choice_id, choice.text %>
+  <%= form_for Answer.new, url: question_answers_path(question_id: @question.id), html: { class: 'nifty_form' } do |f| %>
+    <% @question.choices.each do |choice| %>
+      <div class="form-group">
+        <%= f.radio_button :choice_id, choice.id %>
+        <%= label :choice_id, choice.text %>
+      </div>
+    <% end %>
+
+    <%= f.submit "Next", class: 'btn btn-default' %>
   <% end %>
-
-  <%= f.submit "Next" %>
-<% end %>
+  <hr>
+</section>

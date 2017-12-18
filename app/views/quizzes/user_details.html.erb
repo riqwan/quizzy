@@ -1,8 +1,12 @@
-<h3>User Details</h3>
+<h2 class="page-title">Enter your name to continue</h2>
 
-<%= form_for User.new, url: users_path, html: { class: 'nifty_form' } do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<section class="block">
+  <%= form_for User.new, url: users_path, html: { class: 'nifty_form' } do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
 
-  <%= f.submit "Create" %>
-<% end %>
+    <%= f.submit "Create", class: 'btn btn-default' %>
+  <% end %>
+</section>

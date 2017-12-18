@@ -1,11 +1,24 @@
-<h3>Results</h3>
+<h2 class="page-title">Results</h2>
 
 <% @quiz.questions.each do |question| %>
-  <h4><%= question.text %></h4>
+  <section class="block">
+    <h3 class="title"><%= question.text %></h3>
 
-  <% question.choices.each do |choice| %>
-    <% answers = Answer.where(choice: choice) %>
-    <% answers_by_user = answers.find_by(quiz_response: @user.quiz_response) %>
-    <p><%= choice.text %> - <%= answers.count %> <span><%= answers_by_user.present? ? '(Selected by you)' : nil %></span></p>
-  <% end %>
+    <ul class="list-unstyled choices">
+      <% question.choices.each do |choice| %>
+        <% answers = Answer.where(choice: choice, question: question) %>
+        <% answers_by_user = answers.find_by(quiz_response: @user.quiz_response) %>
+
+        <li>
+          <% if choice.correct? %>
+            <i class="glyphicon glyphicon-ok correct-choice"></i>
+          <% end %>
+
+          <%= choice.text %>
+
+          <span>(<%= answers.count %> user(s) voted on this) <b><%= answers_by_user.present? ? '| (Voted by you)' : nil %></b></span>
+        </li>
+      <% end %>
+    </ul>
+  </section>
 <% end %>

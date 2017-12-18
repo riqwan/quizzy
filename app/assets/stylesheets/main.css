@@ -1,0 +1,46 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #349A9A;
+}
+
+.block {
+  background: #fff;
+  padding: 15px 35px;
+  border-radius: 2px;
+  box-shadow: 0 0 15px -2px;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  color: #fff;
+  margin: 80px auto;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.block .title {
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.choices li {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.choices li span {
+  color: #999;
+  font-size: 11px;
+  font-style: italic;
+}
+
+.correct-choice {
+  position: absolute;
+  left: -20px;
+  top: 3px;
+  color: green;
+}
