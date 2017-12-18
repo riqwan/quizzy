@@ -14,7 +14,7 @@ class QuizzesController < ApplicationController
 
   def find_quiz
     # Assuming that there is only going to be one quiz on this application
-    @quiz = Quiz.first
+    @quiz = Quiz.last
   end
 
   def find_user
